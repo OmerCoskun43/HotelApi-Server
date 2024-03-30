@@ -18,15 +18,18 @@ const UserSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      set: (password) => {
-        if (
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(password)
-        ) {
-          return passwordEncrypt(password);
-        } else {
-          throw new Error("Password type is not correct.");
-        }
-      },
+      // set: (password) => {
+      //   if (
+      //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(password)
+      //   ) {
+      //     return passwordEncrypt(password);
+      //   } else {
+      //     throw new Error("Password type is not correct.");
+      //   }
+      // },
+      set: (password) =>{
+        return  passwordEncrypt(password);
+      }
     },
 
     email: {
